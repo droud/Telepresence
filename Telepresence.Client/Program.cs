@@ -14,6 +14,12 @@ namespace Telepresence.Client
         [STAThread]
         static void Main()
         {
+            if (RuntimePolicyHelper.LegacyV2RuntimeEnabledSuccessfully == false)
+            {
+                // we have a problem!
+                MessageBox.Show("Cannot enable V2 runtime crap!");
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Telepresence());

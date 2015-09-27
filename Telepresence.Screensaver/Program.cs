@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -13,6 +14,12 @@ namespace Telepresence.Screensaver
         [STAThread]
         static void Main(string[] args)
         {
+            if (RuntimePolicyHelper.LegacyV2RuntimeEnabledSuccessfully == false)
+            {
+                // we have a problem!
+                MessageBox.Show("Cannot enable V2 runtime crap!");
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
